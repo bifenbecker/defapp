@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-sm mt-3">
+    <div class="card">
+      <div class="card-header">
+        Вход
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Введите почту и пароль для входа</h5>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.email.error }}
+            {{ form.email }}
+            {{ form.password.error }}
+            {{ form.password }}
+            <button class="btn btn-primary mt-3" type="submit">Войти!</button>
+        </form>
+      </div>
+    </div>
+</div>
+{% endblock %}
