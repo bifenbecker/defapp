@@ -83,9 +83,9 @@ WSGI_APPLICATION = 'DefApp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'apacheserver',
+        'NAME': 'DefApp',
         'USER': 'admin',
-        'PASSWORD': 'admin',
+        'PASSWORD': 'Hjvf22122001',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
