@@ -61,7 +61,7 @@ class LoginForm(AuthenticationForm):
         password = self.cleaned_data.get('password')
 
         if email is not None and password:
-            self.user_cache = authenticate(self.request, username=email.split("@")[0], email=email, password=password)
+            self.user_cache = authenticate(self.request,username=email.split("@")[0], email=email, password=password)
             if self.user_cache is None:
                 raise ValidationError('Неверная почта и пароль', code='invalid_login')
             else:
@@ -72,7 +72,7 @@ class LoginForm(AuthenticationForm):
     def confirm_login_allowed(self, user):
         if not user.is_active:
             raise ValidationError('Аккаунт заблокирован', code='inactive')
-
+        login(self.request, user)
 
     def get_user(self):
         return self.user_cache

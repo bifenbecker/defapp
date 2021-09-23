@@ -1,4 +1,6 @@
 from django.contrib.auth import logout, login
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.views import View
@@ -28,6 +30,7 @@ class LoginPageView(LoginView):
         'page_title': 'Логин'
     }
     authentication_form = LoginForm
+
 
 
 class RegistrationPageView(View):
