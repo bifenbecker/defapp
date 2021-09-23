@@ -95,11 +95,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get("NAME_DB"),
-            'USER': os.environ.get("USER_DB"),
+            'NAME': 'mydefapp',
+            'USER': 'bifenbecker',
             'PASSWORD': os.environ.get("PASSWORD_DB"),
-            'HOST': os.environ.get("HOST_DB"),
-            'PORT': os.environ.get("PORT_DB"),
+            'HOST': 'localhost',
+            'PORT': '',
         }
     }
 
