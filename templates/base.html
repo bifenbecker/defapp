@@ -16,6 +16,7 @@
 
 <nav>
     <ul class="nav justify-content-center">
+        {{ request.user }}
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="{% url 'main_page_url' %}">Главная</a>
       </li>

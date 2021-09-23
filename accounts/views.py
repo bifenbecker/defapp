@@ -1,27 +1,11 @@
 from django.contrib.auth import logout, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render, redirect
 from django.views import View
 
 from .forms import *
-
-
-class ViewMixin(View):
-    template_name = ""
-    context = {
-        'page_title': ''
-    }
-
-    def fill_context(self, new_context=None):
-        if type(new_context) != dict:
-            raise Exception("incorrect argument in fill_context")
-
-        self.context.update(new_context)
-
-    def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, context=self.context)
 
 
 class LoginPageView(LoginView):
@@ -58,13 +42,6 @@ class RegistrationPageView(View):
 
         self.context.update({'form': form })
         return render(request, self.template_name, context=self.context)
-
-
-class LogoutPageView(View):
-
-    def get(self, request):
-        logout(request)
-        return redirect('login_view_url')
 
 
 class ProfileView(View):
