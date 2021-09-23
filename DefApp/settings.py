@@ -90,14 +90,13 @@ if IS_LOCAL_DEV:
             'PORT': '5432',
         }
     }
-
 else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'mydefapp',
             'USER': 'bifenbecker',
-            'PASSWORD': os.environ.get("PASSWORD_DB"),
+            'PASSWORD': 'Hjvf22122001',
             'HOST': 'localhost',
             'PORT': '',
         }
