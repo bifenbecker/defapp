@@ -1,8 +1,9 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, login
 from django.contrib.auth import authenticate
+
 
 class RegistrationForm(forms.ModelForm):
     email = forms.EmailField(max_length=75, required=True,
@@ -60,7 +61,7 @@ class LoginForm(AuthenticationForm):
         password = self.cleaned_data.get('password')
 
         if email is not None and password:
-            self.user_cache = authenticate(self.request, username=email, email=email, password=password)
+            self.user_cache = authenticate(self.request, username=email.split("@")[0], email=email, password=password)
             if self.user_cache is None:
                 raise ValidationError('Неверная почта и пароль', code='invalid_login')
             else:
@@ -71,6 +72,7 @@ class LoginForm(AuthenticationForm):
     def confirm_login_allowed(self, user):
         if not user.is_active:
             raise ValidationError('Аккаунт заблокирован', code='inactive')
+
 
     def get_user(self):
         return self.user_cache

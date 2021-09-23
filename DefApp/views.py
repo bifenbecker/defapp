@@ -5,4 +5,5 @@ class MainPageReDirect(View):
     template_name = 'main.html'
 
     def get(self, request, *args, **kwargs):
+
         return render(request, self.template_name)

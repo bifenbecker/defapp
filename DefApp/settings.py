@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-x25t)_odr2ck5s)e^_!!x4f+9kld=0ava0#xo4t%-+7g6%+b6e
 DEBUG = True
 IS_LOCAL_DEV = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -42,8 +42,6 @@ INSTALLED_APPS = [
     'accounts',
 ]
 
-if not IS_LOCAL_DEV:
-    INSTALLED_APPS.append('mod_wsgi.server')
 
 
 MIDDLEWARE = [
@@ -80,16 +78,29 @@ WSGI_APPLICATION = 'DefApp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'DefApp',
-        'USER': 'admin',
-        'PASSWORD': 'Hjvf22122001',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+if IS_LOCAL_DEV:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'DefApp',
+            'USER': 'admin',
+            'PASSWORD': 'admin',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+        }
     }
-}
+
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get("NAME_DB"),
+            'USER': os.environ.get("USER_DB"),
+            'PASSWORD': os.environ.get("PASSWORD_DB"),
+            'HOST': os.environ.get("HOST_DB"),
+            'PORT': os.environ.get("PORT_DB"),
+        }
+    }
 
 
 # Password validation
