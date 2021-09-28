@@ -80,27 +80,22 @@ WSGI_APPLICATION = 'DefApp.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 if IS_LOCAL_DEV:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'DefApp',
-            'USER': 'admin',
-            'PASSWORD': 'admin',
-            'HOST': '127.0.0.1',
-            'PORT': '5432',
-        }
-    }
+    DB_USER = 'admin'
+    DB_PASSWORD = 'admin'
 else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'mydefapp',
-            'USER': 'bifenbecker',
-            'PASSWORD': 'Hjvf22122001',
-            'HOST': 'localhost',
-            'PORT': '',
-        }
+    DB_USER = 'defappadmin'
+    DB_PASSWORD = 'NRytubn6unmiM^'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'defapp',
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': 'localhost',
+        'PORT': '',
     }
+}
 
 
 # Password validation
