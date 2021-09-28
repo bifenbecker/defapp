@@ -83,8 +83,10 @@ if IS_LOCAL_DEV:
     DB_USER = 'admin'
     DB_PASSWORD = 'admin'
 else:
-    DB_USER = 'defappadmin'
-    DB_PASSWORD = 'NRytubn6unmiM^'
+    # DB_USER = 'defappadmin'
+    # DB_PASSWORD = 'NRytubn6unmiM^'
+    DB_USER = os.environ.get('USER_DB')
+    DB_PASSWORD = os.environ.get('PASSWORD_DB')
 
 DATABASES = {
     'default': {
